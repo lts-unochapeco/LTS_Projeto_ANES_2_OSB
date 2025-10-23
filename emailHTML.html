@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<!-- Cabeçalho do código HTML -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Estilização do código abaixo -->
+    <style> 
+        body {
+            height: 100%; 
+            width: 90%;
+            align-items: center;
+            margin:auto;
+            padding: 20px;
+        }
+
+
+        .Top {
+            padding-top: 20px;
+            text-align: center;
+        }
+
+
+        .Top > p {
+            font-size: medium; 
+            padding: 5px; 
+            text-align: center;
+        }
+
+
+        .Top > a > img {
+            padding: 10px; 
+            width: 70%;
+            align-items: end;
+        }
+
+        .Top > h1 {
+            font-size: medium; 
+            padding: 5px; 
+            text-align: center; 
+            background-color: #32cd32; 
+            border: 1px solid rgb(0, 0, 0); 
+            border-radius: 10px; 
+            margin-top: 20px; 
+            margin-bottom: 20px;
+        }
+
+        .Resultados {
+            height: 100%; 
+            width: 100%;
+        }
+
+
+        .Tabelas {
+            height: 100%; 
+            width: 100%; 
+            text-align: center;
+        }
+
+        .Tabelas > h3 {
+            font-size: medium; 
+            color: #000000;
+        }
+
+
+        .tabela {
+            color: black; 
+            overflow-x: scroll; 
+            border: 1px solid black; 
+            border-collapse: collapse;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        th {
+            background-color: #32cd32; 
+            color: rgb(0, 0, 0); 
+            font-size: medium; 
+            border: 1px solid rgb(0, 0, 0);
+        }
+
+        .Social {
+            height: 100%; 
+            width: 100%; 
+            align-items: center; 
+            padding-bottom: 0px;
+        }
+
+        .Social > h2,p {
+            font-size: medium; 
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<!-- Corpo do html (aqui é onde fica o conteúdo) -->
+<body>
+    <div class="Top"> <!-- Top: Nessa classe é onde está a imagem do observatório com o link na mesma e o campo de busca -->
+        <p>TEMPVALUEFORMAINPARAGRAPH</p>
+
+        <a href="https://chapeco.osbrasil.org.br/processos-licitatorios/" target="_blank"><img src="banner.jpg"></a>
+
+        <h1>Para pesquisar editais pressione Ctrl + F e digite sua busca.</h1>
+    </div>
+    
+    <div class="Resultados"> <!-- Resultados: Aqui é a div que engloba as outras duas(Tabelas, tabela) -->
+        <div class="Tabelas"> <!-- Tabelas: Classe criada para estilizar o tamanho dos componentes junto a tabela -->
+            <h3>Processos Licitatórios</h3>
+            <hr>
+
+            <table class="tabela"> <!-- tabela: Classe criada para estilizar especificamente a tabela -->
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Horario</th>
+                        <th>Edital</th>
+                        <th>Objeto</th>
+                        <th>Montante</th>
+                        <th>Modalidade</th>
+                        <th>Gestora</th>
+                        <th>Secretária</th>
+                    </tr>
+                </thead>
+            </table>
+            <p>TEMPVALUEFORWHERETHEROWSWILLBEFIRST</p>
+            <br>
+        </div>
+
+        <div class="Tabelas"> <!-- Já foi mencionado acima -->
+            <h3>Dispensa De Licitação e Inexigibilidade</h3>
+            <hr>
+
+            <table class="tabela"> <!-- Já foi mencionado acima -->
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Horario</th>
+                        <th>Edital</th>
+                        <th>Objeto</th>
+                        <th>Montante</th>
+                        <th>Modalidade</th>
+                        <th>Gestora</th>
+                        <th>Secretária</th>
+                    </tr>
+                </thead>
+            </table>
+            <p>TEMPVALUEFORWHERETHEROWSWILLBESECOND</p>
+            <br>
+        </div>
+    </div>
+
+    <div class="Social"> <!-- Social: Classe criada especificamente para estilizar a parte social -->
+        <h2>Observatório Social do Brasil, Chapecó/SC</h2>
+
+        <p>Avenida Getúlio Vargas, 1748 N, Centro | Condomínio Coworking, sala 3| CEP 89805-000</p>
+
+        <p><b>E-mail:</b> chapeco@osbrasil.org.br</p>
+    </div>
+</body>
+</html>
