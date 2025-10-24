@@ -1,4 +1,3 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait          # Biblioteca usada para fazer o computador esperar
 from selenium.webdriver.support import expected_conditions as EC # Biblioteca usada em conjunto com a WebDriverWait para a espera do computador ser mais dinâmica, essa biblioteca vai capturar as "condições esperadas" para poder prosseguir com o código
@@ -104,8 +103,7 @@ def PegandoValorTotal(driver):
     return Valor_Total
 
 
-def pegando_informacoes(lista_avisos):
-    driver = webdriver.Chrome('')
+def pegando_informacoes(lista_avisos, driver):
     return_info = []
 
     progresso_atual = 0
@@ -133,7 +131,5 @@ def pegando_informacoes(lista_avisos):
         }
 
         return_info.append(dicionario_linha)
-
-    driver.close()
 
     return return_info

@@ -1,5 +1,3 @@
-from time import sleep
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC # Biblioteca usada em conjunto com a WebDriverWait para a espera do computador ser mais dinâmica, essa biblioteca vai capturar as "condições esperadas" para poder prosseguir com o código
@@ -8,7 +6,6 @@ from modulos.datetime import Time
 # Abaixo está a minha ferramenta de espera(substituindo o timesleep) criada.
 
 def preparando_site(driver, num):
-    driver = webdriver.Chrome('')
     aguarde = WebDriverWait(driver, 10)
 
     driver.get('https://transparencia.e-publica.net/epublica-portal/#/chapeco/portal/compras/licitacaoTable')
@@ -86,19 +83,17 @@ def pegando_links(driver):
     return lista_avisos
 
 
-def pegando_avisos_inexequibilidades():
-    driver = webdriver.Chrome('')
+def pegando_avisos_inexequibilidades(driver):
     
     num = "5"
     c = 0
     while True:
-        driver = preparando_site(driver, num)
+        drivers = preparando_site(driver, num)
 
         if c == 0:
-            lista_aviso0 = pegando_links(driver)
-            driver.close()
+            lista_aviso0 = pegando_links(drivers)
         else:
-            lista_aviso1 = pegando_links(driver)
+            lista_aviso1 = pegando_links(drivers)
 
         num = "7"
         c += 1
@@ -106,7 +101,6 @@ def pegando_avisos_inexequibilidades():
             break
         
 
-    driver.close()
     lista_avisos = lista_aviso0 + lista_aviso1
 
     return lista_avisos

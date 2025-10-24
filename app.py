@@ -1,4 +1,5 @@
 from time import sleep
+from selenium import webdriver
 
 # Processos
 from processos.preparando_website import pegando_avisos_abertos
@@ -10,18 +11,21 @@ from processos.cod_parada import PegandocodParada
 # Modulos
 from modulos.formato_arquivo import CSV, salvando_dados_mongodb
 
+driver = webdriver.Chrome('')
+coleta_inicial = False
+
 condicao2 = None
 
-def main():
+def main(driver):
     arquivos = []
 
-    links_avisos_abertos = pegando_avisos_abertos()
-    dicionario_avisos_abertos = pegando_informacoes(links_avisos_abertos)
+    links_avisos_abertos = pegando_avisos_abertos(driver)
+    dicionario_avisos_abertos = pegando_informacoes(links_avisos_abertos, driver)
     arquivo1 = CSV(dicionario_avisos_abertos)
     salvando_dados_mongodb(dicionario_avisos_abertos)
 
-    links_inexequibilidades = pegando_avisos_inexequibilidades()
-    dicionario_inexequibilidade = pegando_informacoes(links_inexequibilidades)
+    links_inexequibilidades = pegando_avisos_inexequibilidades(driver)
+    dicionario_inexequibilidade = pegando_informacoes(links_inexequibilidades, driver)
     arquivo2 = CSV(dicionario_inexequibilidade)
     salvando_dados_mongodb(dicionario_inexequibilidade)    
     
@@ -38,19 +42,21 @@ while True:
     print(condicao1)
     print(condicao2)
 
-    if condicao2 is None:
+    if not coleta_inicial:
+        print("Monitoramento iniciado. Realizando a primeira coleta")
+        main(driver)
+
         condicao2 = condicao1
-        print("Monitoramento iniciado. Referência estabelecida.")
-        main()
-        sleep(3600)
-        continue # Vai para a próxima checagem sem rodar o main()
+        print("Referência estabelecida")
+        
+        coleta_inicial = True
 
     elif condicao1 != condicao2:
 
         print(f"   repr(Anterior): {repr(condicao2)}") 
         print(f"   repr(Atual):    {repr(condicao1)}")
 
-        main()  
+        main(driver)  
 
         condicao2 = condicao1
         print(condicao1)

@@ -1,5 +1,4 @@
 from sqlite3 import Time
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait          # Biblioteca usada para fazer o computador esperar
 from selenium.webdriver.support import expected_conditions as EC # Biblioteca usada em conjunto com a WebDriverWait para a espera do computador ser mais dinâmica, essa biblioteca vai capturar as "condições esperadas" para poder prosseguir com o código.
@@ -8,9 +7,8 @@ from bs4 import BeautifulSoup
 # Módulos personalizados:
 from modulos.datetime import Time
 
-def preparando_website():
+def preparando_website(driver):
     # 1 - Entrar no site
-    driver = webdriver.Chrome('')
     driver.get('https://transparencia.e-publica.net/epublica-portal/#/chapeco/portal/compras/licitacaoTable')
     # Abaixo está a minha ferramenta de espera(substituindo o timesleep) criada.
     aguarde = WebDriverWait(driver, 10)
@@ -92,15 +90,13 @@ def pegando_links(driver):
     return lista_avisos
     
     
-def pegando_avisos_abertos():
+def pegando_avisos_abertos(driver):
 
     # Prepara o site para a raspagem (cliques, filtros, etc.).
-    driver = preparando_website()
+    drivers = preparando_website(driver)
 
     # Obtém os links dos avisos da página.
-    lista_avisos = pegando_links(driver)
-
-    driver.close() # Fechando o navegador.
+    lista_avisos = pegando_links(drivers)
 
     # Registra o número de avisos abertos encontrados.
     return lista_avisos
